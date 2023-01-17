@@ -11,7 +11,7 @@ const navbarStyles = {
 
 const Header = ({ title }) => {
     return (
-        <Navbar style={navbarStyles} variant="dark">
+        <Navbar style={navbarStyles}>
             <Container>
                 <Navbar.Brand href="/">{title}</Navbar.Brand>
             </Container>
