@@ -6,8 +6,12 @@ import ImageCard from './components/ImageCard';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
+import Welcome from './components/Welcome';
+
 
 const UNSPLASH_KEY = process.env.REACT_APP_UNSPLASH_KEY;
+
+
 
 const App = () => {
   const [word, setWord] = useState('')
@@ -36,13 +40,14 @@ const App = () => {
       <Header title="Images Gallery" />
       <Search word={word} setWord={setWord} handleSubmit={handleSubmit} />
       <Container className='mt-4'>
-        <Row xs={1} ma={2} lg={3}>
-          {images.map((image, i) => (
-            <Col key={i} className="pb-3">
-              <ImageCard image={image} deleteImage={handleDeleteImage} />
-            </Col>
-          ))}
-        </Row>
+        {images.length ?
+          <Row xs={1} ma={2} lg={3}>
+            {images.map((image, i) => (
+              <Col key={i} className="pb-3">
+                <ImageCard image={image} deleteImage={handleDeleteImage} />
+              </Col>
+            ))}
+          </Row> : (<Welcome />)}
       </Container>
     </div>
   );
